@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+    <title>MediaX - 去水印解析</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div class="topbar-logo">⚡</div>
+            <div>
+                <h1 class="topbar-title">MediaX</h1>
+                <span class="topbar-sub">短视频去水印解析</span>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <span class="status-dot"></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Platform Tags -->
+        <div class="platforms">
+            <span class="ptag active" data-p="all">全部</span>
+            <span class="ptag" data-p="douyin">🎵 抖音</span>
+            <span class="ptag" data-p="kuaishou">⚡ 快手</span>
+            <span class="ptag" data-p="bilibili">📺 B站</span>
+            <span class="ptag" data-p="xiaohongshu">📕 小红书</span>
+        </div>
+
+        <!-- Input Card -->
+        <div class="card">
+            <div class="card-body">
+                <textarea 
+                    id="urlInput" 
+                    class="input-textarea"
+                    placeholder="粘贴分享链接或文案...&#10;例: https://v.douyin.com/xxx/"
+                    rows="3"
+                ></textarea>
+                <div class="input-actions">
+                    <button class="btn-paste" onclick="pasteFromClipboard()">📋 粘贴</button>
+                    <button id="parseBtn" class="btn-parse" onclick="parseUrl()">
+                        <span class="btn-text">🔍 解析</span>
+                        <span class="btn-loading" style="display:none;"><span class="spinner"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="resultArea" class="result-area" style="display:none;"></div>
+
+        <!-- History -->
+        <div id="historySection" style="display:none;">
+            <div class="section-header">
+                <span class="section-title">解析记录</span>
+                <button class="btn-clear" onclick="clearHistory()">清空</button>
+            </div>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
