@@ -85,9 +85,6 @@ def api_parse_batch():
 
 @app.route("/api/proxy")
 def api_proxy():
-    """
-    代理下载接口 - 浏览器端 fetch blob 下载
-    """
     url = request.args.get("url", "").strip()
     filename = request.args.get("filename", "video.mp4").strip()
 
@@ -160,8 +157,9 @@ def api_platforms():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
     print("=" * 50)
     print("  Video Watermark Removal Engine - Web UI")
-    print("  http://localhost:5000")
+    print(f"  http://localhost:{port}")
     print("=" * 50)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)
